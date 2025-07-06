@@ -1,0 +1,332 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  /* Temporary borders for debugging layout */
+  /* border: 2px solid green; */
+}
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  width: 100%; /* Changed from 100vw to 100% for better mobile compatibility */
+  overflow-x: hidden;
+  position: relative;
+  /* Add a background color to debug body visibility */
+  /* background-color: purple; */
+  /* border: 2px solid red; */
+}
+.container {
+  width: 100%; /* Changed from 100vw to 100% for better mobile compatibility */
+  max-width: 100%; /* Changed from 100vw to 100% */
+  margin: 0;
+  padding: 0 0 32px 0;
+  background: #000;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  min-height: 100vh;
+  position: relative;
+  /* margin-top: 60px; */ /* Ensure this line is removed */
+  /* border: 2px solid blue; */
+}
+.header-main {
+  display: flex;
+  justify-content: center; /* Center the content within the header */
+  align-items: center;
+  width: 100%; /* Ensure it takes full width */
+  margin: 0 auto 32px auto;
+  flex-wrap: wrap;
+  padding: 0; /* Remove padding from header-main, it will be on header-content */
+  /* border: 2px solid purple; */
+}
+.header-content {
+  display: flex;
+  justify-content: space-between; /* Space out heading and contact info */
+  align-items: center;
+  max-width: 1400px; /* Constrain content width */
+  width: 100%; /* Ensure content takes full width within max-width */
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  padding: 0 32px; /* Consistent padding for the content inside header */
+}
+h1 {
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #4fc3f7;
+  font-weight: 700;
+  text-align: center;
+  flex-grow: 1;
+  /* border: 2px solid yellow; */
+}
+@media (max-width: 700px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+  .contact-info {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    padding: 0;
+  }
+  .header-main {
+    padding: 0 16px; /* Adjust header padding for very small screens */
+  }
+}
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  margin-left: auto;
+  flex-shrink: 0; /* Ensure contact info doesn't shrink unnecessarily */
+  /* min-width: 200px; */
+  justify-content: flex-end;
+  /* border: 2px solid orange; */
+}
+.contact-info a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+.instagram-icon {
+  width: 24px;
+  height: 24px;
+  /* Instagram Gradient */
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%);
+  border-radius: 4px; /* Slight rounding to match logo */
+  stroke: none; /* Remove stroke from SVG */
+}
+
+.instagram-icon rect, .instagram-icon path, .instagram-icon line {
+  stroke: white; /* Make the camera icon white */
+  stroke-width: 2;
+}
+
+.email-icon {
+  fill: #4285F4; /* Google Blue */
+  stroke: white; /* White outline */
+  stroke-width: 0.8; /* Adjust stroke width as needed */
+}
+
+.youtube-icon {
+  fill: #FF0000; /* YouTube Red */
+  stroke: white; /* White outline */
+  stroke-width: 0.8; /* Adjust stroke width as needed */
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin: 0 auto 40px auto;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 32px;
+  /* border: 2px solid lightblue; */ /* Temporary border for categories grid */
+}
+@media (max-width: 1100px) {
+  .categories { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .categories { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 4px; }
+  .container { border-radius: 0; }
+  .category {
+    max-width: unset;
+    min-width: unset;
+    padding: 28px 4px 20px 4px;
+  }
+}
+@media (max-width: 500px) {
+  .categories { grid-template-columns: 1fr; }
+  .category {
+    max-width: unset;
+    min-width: unset;
+    padding: 28px 16px 20px 16px;
+  }
+}
+.category {
+  background: linear-gradient(135deg, #232526, #414345);
+  border: 2px solid #4fc3f7;
+  border-radius: 24px;
+  padding: 28px 16px 20px 16px; /* Default for desktop */
+  min-width: 180px;
+  max-width: 260px;
+  min-height: 200px;
+  max-height: 250px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 12px 0 rgba(79, 195, 247, 0.15);
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  /* border: 2px solid lime; */ /* Temporary border for individual category boxes */
+}
+.category:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 32px 0 rgba(79, 195, 247, 0.25);
+  background: linear-gradient(135deg, #283e51, #485563);
+}
+.category-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #4fc3f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 2px 8px 0 rgba(79, 195, 247, 0.18);
+}
+.category-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+  word-break: break-word; /* Ensure long titles wrap */
+}
+.category-desc {
+  font-size: 0.98rem;
+  color: #b3e5fc;
+  margin-bottom: 0;
+  word-break: break-word; /* Ensure long descriptions wrap */
+}
+.tools {
+  display: none;
+  flex-direction: column;
+  animation: fadeIn 0.5s;
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+}
+.tools.active {
+  display: flex;
+}
+.tools-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 32px;
+}
+.back-btn {
+  background: #4fc3f7;
+  color: #0f2027;
+  border: none;
+  border-radius: 18px;
+  padding: 8px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  box-shadow: 0 2px 8px 0 rgba(79, 195, 247, 0.18);
+  margin-right: 24px;
+}
+.back-btn:hover {
+  background: #0288d1;
+  color: #fff;
+}
+.tools-title {
+  font-size: 1.5rem;
+  color: #4fc3f7;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 32px;
+  /* border: 2px solid cyan; */ /* Temporary border for tools grid */
+}
+@media (max-width: 1100px) {
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .tools-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 4px; }
+  .tool {
+    max-width: unset;
+    min-width: unset;
+    padding: 0 4px;
+  }
+}
+@media (max-width: 500px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .tool {
+    max-width: unset;
+    min-width: unset;
+    padding: 0 16px;
+  }
+}
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #232526, #414345);
+  border: 2px solid #4fc3f7;
+  border-radius: 22px;
+  width: 100%; /* Changed from 98% to 100% for better grid fitting */
+  min-width: 120px;
+  max-width: 200px;
+  height: 150px;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.13s, box-shadow 0.13s;
+  box-shadow: 0 2px 12px 0 rgba(79, 195, 247, 0.13);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  text-decoration: none;
+  margin-right: 0;
+  margin-left: 0;
+  margin: 0 auto;
+  padding: 10px;
+  /* border: 2px solid magenta; */ /* Temporary border for individual tool boxes */
+}
+.tool:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px 0 rgba(79, 195, 247, 0.22);
+  background: linear-gradient(135deg, #283e51, #485563);
+}
+.tool-emoji {
+  font-size: 2.7rem;
+  margin-bottom: 2px;
+}
+.tool-label {
+  font-size: 1.08rem;
+  color: #b3e5fc;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+  word-break: break-word;
+}
+.tool-desc {
+  font-size: 0.92rem;
+  color: #90caf9;
+  margin-top: 2px;
+  text-align: center;
+  min-height: 32px;
+  word-break: break-word; /* Ensure long tool descriptions wrap */
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+} 
